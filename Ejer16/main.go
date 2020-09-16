@@ -1,0 +1,18 @@
+package main
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	http.HandleFunc("/", home)
+
+	http.ListenAndServe(":3000", nil)
+
+	fmt.Println("Se levanto")
+}
+
+func home(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "./index.html")
+}
